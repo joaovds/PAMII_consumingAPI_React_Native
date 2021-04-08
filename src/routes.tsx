@@ -3,6 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import Home from './pages/Home';
+import Result from './pages/Result';
 
 const AppStack = createStackNavigator();
 
@@ -18,6 +19,7 @@ const Routes = () => {
         }}
       >
         <AppStack.Screen name='Home' component={Home} />
+        <AppStack.Screen name='Result' component={Result} />
       </AppStack.Navigator>
     </NavigationContainer>
   );
