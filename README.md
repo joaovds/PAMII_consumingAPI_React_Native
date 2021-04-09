@@ -27,6 +27,6 @@
 - [API - OMDb API](https://www.omdbapi.com/)
 
 <div style="display: flex; justify-content: space-around; align-items: center; flex-wrap: wrap;">
-  <img src=".github/homeScreen.jpg" alt="home" style="width: 100%; max-width: 300px; margin-top: 30px;">
-  <img src=".github/resultScreen.jpg" alt="resultScreen" style="width: 100%; max-width: 300px; margin-top: 30px;">
+  <img src=".github/homeScreen.jpg" alt="home" style="margin-top: 30px;" width="200px">
+  <img src=".github/resultScreen.jpg" alt="resultScreen" style="margin-top: 30px;" width="200px">
 </div>
