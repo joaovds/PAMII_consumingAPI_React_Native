@@ -20,7 +20,9 @@ const Result: React.FC = () => {
         </GoBack>
 
         <TouchableOpacity onPress={() => {console.log('test')}}>
-          <Image source={{ uri: 'https://images.pexels.com/photos/7171397/pexels-photo-7171397.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260' }} />
+          <Image
+            source={{ uri: 'https://images.pexels.com/photos/7171397/pexels-photo-7171397.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260' }}
+          />
         </TouchableOpacity>
 
         <Title>The Lord of the Rings: The Fellowship of the Ring</Title>
