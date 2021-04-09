@@ -8,7 +8,7 @@ export const Container = styled.View`
 `;
 
 export const Title = styled.Text`
-  color: #047857;
+  color: #ECFDF5;
   font-size: 32px;
   font-weight: bold;
   margin-bottom: 50px;
@@ -32,12 +32,12 @@ export const ButtonContainer = styled.TouchableOpacity`
   border-radius: 10px;
   padding: 15px 22px;
 
-  background-color: #111827;
+  background-color: #064E3B;
 `;
 
 export const ButtonText = styled.Text`
   font-size: 16px;
   text-align: center;
   font-weight: 600;
-  color: #4B5563;
+  color: #D1FAE5;
 `;
