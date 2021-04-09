@@ -9,7 +9,7 @@ const App: React.FC = () => {
     <>
       <StatusBar
         style='light'
-        backgroundColor='transparent'
+        backgroundColor='#121212'
         translucent
       />
       <Routes />
