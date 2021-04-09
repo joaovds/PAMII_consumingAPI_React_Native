@@ -1,14 +1,16 @@
-import React, { useCallback } from 'react';
+import React, { useState } from 'react';
 import { KeyboardAvoidingView, Platform } from 'react-native';
-import { Container, Input, ButtonContainer, ButtonText, Title } from './styles';
+import { By, Container, Input, ButtonContainer, ButtonText, Title } from './styles';
 import { useNavigation } from '@react-navigation/native';
 
 const Home: React.FC = () => {
   const navigation = useNavigation();
 
-  const handleNavigateToResult = useCallback(() => {
-    navigation.navigate('Result');
-  }, []);
+  const [movieSearch, setMovieSearch] = useState('');
+
+  const handleNavigateToResult = () => {
+    navigation.navigate('Result', { search: movieSearch });
+  };
 
   return (
     <KeyboardAvoidingView
@@ -22,6 +24,8 @@ const Home: React.FC = () => {
           placeholder="Enter the name of the movie"
           autoCorrect={false}
           placeholderTextColor='#6B7280'
+          value={movieSearch}
+          onChangeText={text => setMovieSearch(text)}
         />
 
         <ButtonContainer onPress={handleNavigateToResult}>
@@ -29,6 +33,8 @@ const Home: React.FC = () => {
             Search
           </ButtonText>
         </ButtonContainer>
+
+        <By>João Victor da Silva</By>
       </Container>
     </KeyboardAvoidingView>
   );

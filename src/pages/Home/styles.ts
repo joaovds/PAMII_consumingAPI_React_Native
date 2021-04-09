@@ -41,3 +41,12 @@ export const ButtonText = styled.Text`
   font-weight: 600;
   color: #D1FAE5;
 `;
+
+export const By = styled.Text`
+  color: #374151;
+  font-size: 16px;
+
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 5px;
+`;

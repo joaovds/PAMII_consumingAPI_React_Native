@@ -1,12 +1,44 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { ScrollView, TouchableOpacity } from 'react-native';
 import { Container, GoBack, Image, MovieInfo, Title } from './styles';
-import { useNavigation } from '@react-navigation/native'
+import { useNavigation, useRoute } from '@react-navigation/native'
 
 import { Feather as Icon } from '@expo/vector-icons';
 
+import axios from 'axios';
+import { OMDb_API_KEY } from '../../../variables';
+
+interface IParams {
+  search: string;
+}
+
+interface IMovieInfo {
+  Actors: string;
+  Country: string;
+  Director: string;
+  Genre: string;
+  Language: string;
+  Plot: string;
+  Poster: string;
+  Runtime: string;
+  Title: string;
+  Year: string;
+}
+
 const Result: React.FC = () => {
   const navigation = useNavigation();
+  const route = useRoute();
+
+  const [movieInfo, setMovieInfo] = useState<IMovieInfo>();
+
+  const routeParams = route.params as IParams;
+  const { search } = routeParams;
+
+  useEffect(() => {
+    axios.get(`http://www.omdbapi.com/?apikey=${OMDb_API_KEY}&t=${search}`).then((response) => {
+      setMovieInfo(response.data);
+    });
+  }, []);
 
   const handleGoBack = useCallback(() => {
     navigation.goBack();
@@ -21,26 +53,35 @@ const Result: React.FC = () => {
 
         <TouchableOpacity onPress={() => {console.log('test')}}>
           <Image
-            source={{ uri: 'https://images.pexels.com/photos/7171397/pexels-photo-7171397.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260' }}
+            source={{ uri: `${movieInfo?.Poster}` }}
           />
         </TouchableOpacity>
 
-        <Title>The Lord of the Rings: The Fellowship of the Ring</Title>
+        <Title>{movieInfo?.Title}</Title>
 
         <MovieInfo>
-          Year: 2001
+          Actors: {movieInfo?.Actors}
         </MovieInfo>
         <MovieInfo>
-          Runtime: 178 min
+          Country: {movieInfo?.Country}
         </MovieInfo>
         <MovieInfo>
-          Genre: Action, Adventure, Drama, Fantasy
+          Director: {movieInfo?.Director}
         </MovieInfo>
         <MovieInfo>
-          Director: Peter Jackson
+          Genre: {movieInfo?.Genre}
         </MovieInfo>
         <MovieInfo>
-          Plot: A meek Hobbit from the Shire and eight companions set out on a journey to destroy the powerful One Ring and save Middle-earth from the Dark Lord Sauron.
+          Language: {movieInfo?.Language}
+        </MovieInfo>
+        <MovieInfo>
+          Runtime: {movieInfo?.Runtime}
+        </MovieInfo>
+        <MovieInfo>
+          Year: {movieInfo?.Year}
+        </MovieInfo>
+        <MovieInfo>
+          Plot: {movieInfo?.Plot}
         </MovieInfo>
       </Container>
     </ScrollView>
